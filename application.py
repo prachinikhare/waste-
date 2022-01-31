@@ -14,7 +14,7 @@ util.load_artifacts()
 #home page
 @application.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("classify.html")
 
 #classify waste
 @application.route("/classifywaste", methods = ["POST"])
