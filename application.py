@@ -4,7 +4,7 @@ import util
 import os
 from werkzeug.utils import secure_filename
 
-application = Flask(__name__, template_folder = "template")
+application = Flask(__name__)
 
 # JSGlue is use for url_for() working inside javascript which is help us to navigate the url
 jsglue = JSGlue() # create a object of JsGlue
@@ -33,7 +33,7 @@ def classifywaste():
 @application.errorhandler(404)
 def page_not_found(e):
     # here i created my own 404 page which will be redirect when 404 error occured in this web app
-    return render_template("404.html"), 404
+    return render_template("404.html")
 
 if __name__ == "__main__":
     application.run(debug=True)
