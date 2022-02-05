@@ -21,7 +21,7 @@ def about():
     return render_template("about.html")
 
 #classify waste
-@application.route("/classify", methods = ["GET","POST"])
+@application.route("/classify", methods = ["POST"])
 def classify():
     return render_template("classify.html")
     image_data = request.files["file"]
