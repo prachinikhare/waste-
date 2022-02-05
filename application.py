@@ -14,6 +14,10 @@ util.load_artifacts()
 #home page
 @application.route("/")
 def home():
+    return render_template("index.html")
+
+@application.route("/")
+def about():
     return render_template("about.html")
 
 #classify waste
@@ -29,6 +33,10 @@ def classifywaste():
     os.remove(image_path)
     return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
 
+@application.route("/")
+def feedback():
+    return render_template("feedback.html")
+    
 # here is route of 404 means page not found error
 @application.errorhandler(404)
 def page_not_found(e):
