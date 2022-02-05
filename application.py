@@ -11,7 +11,7 @@ application.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///feedback.db"
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(application)
 
-class FEEDBACK(db.Model):
+class FEEDBACKPAGE(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(500), nullable=False)
@@ -26,13 +26,13 @@ util.load_artifacts()
 #home page
 @application.route("/")
 def index():
-    feedbacksection = FEEDBACK.query.order_by(FEEDBACK.date_created.desc()).all()
+    feedbacksection = FEEDBACKPAGE.query.order_by(FEEDBACKPAGE.date_created.desc()).all()
     return render_template('index.html', feedbacksection=feedbacksection)
 
-@application.route('/feedbacksection/<int:feedbacksection_id>')
-def feedbacksection(feedbacksection_id):
-    feedbacksection = FEEDBACK.query.filter_by(id=feedbacksection_id).one()
-    return render_template('feedback.html', feedbacksection=feedbacksection)
+@application.route('/feedbacks/<int:feedbacks_id>')
+def feedbacks(feedbacks_id):
+    feedbacks = FEEDBACK.query.filter_by(id=feedbacks_id).one()
+    return render_template('feedback.html', feedbacks=feedbacks)
     
 @application.route("/about")
 def about():
