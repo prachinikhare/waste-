@@ -62,10 +62,10 @@ def feedback():
     return render_template('feedback.html', allFeedback=allFeedback)  
 
 @application.route('/show')
-def Waste products():
+def waste products():
     allFeedback = Feedback.query.all()
     print(allFeedback)
-    return 'this is Waste products page'
+    return 'this is waste products page'
 
 @application.route('/delete/<int:sno>')
 def delete(sno):
