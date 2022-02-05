@@ -12,17 +12,18 @@ jsglue.init_app(application) # and assign the app as a init app to the instance 
 
 util.load_artifacts()
 #home page
-@application.route("/")
+@application.route("/index")
 def home():
     return render_template("index.html")
 
-@application.route("/")
+@application.route("/about")
 def about():
     return render_template("about.html")
 
 #classify waste
-@application.route("/classifywaste", methods = ["POST"])
-def classifywaste():
+@application.route("/classify", methods = ["GET","POST"])
+def classify():
+    return render_template("classify.html")
     image_data = request.files["file"]
     #save the image to upload
     basepath = os.path.dirname(__file__)
@@ -33,7 +34,7 @@ def classifywaste():
     os.remove(image_path)
     return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
 
-@application.route("/")
+@application.route("/feedback")
 def feedback():
     return render_template("feedback.html")
     
