@@ -13,10 +13,10 @@ jsglue.init_app(application) # and assign the app as a init app to the instance 
 util.load_artifacts()
 #home page
 @application.route("/")
-def home():
+def index():
     return render_template("index.html")
 
-@application.route("/")
+@application.route("/about")
 def about():
     return render_template("about.html")
 
