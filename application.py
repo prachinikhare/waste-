@@ -18,7 +18,7 @@ util.load_artifacts()
 @application.route("/",methods=['GET','POST'])
 @cross_origin()
 def home():
-    return render_template("classify.html")
+    return render_template("index.html")
     
 # here is route of 404 means page not found error
 @application.errorhandler(404)
