@@ -18,7 +18,7 @@ util.load_artifacts()
 @application.route("/",methods=['GET'])
 @cross_origin()
 def home():
-    return render_template("index.html")
+    return render_template("classify.html")
 
 #classify waste
 @application.route("/classifywaste",methods=['GET', 'POST'])
