@@ -27,7 +27,7 @@ def about():
     return render_template("about.html")
 
 #classify waste
-@application.route("/classifywaste", methods = ["POST"],,methods=['GET', 'POST'])
+@application.route("/classifywaste",methods=['GET', 'POST'])
 @cross_origin()
 def classifywaste():
     image_data = request.files["file"]
