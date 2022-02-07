@@ -3,31 +3,25 @@ from flask_jsglue import JSGlue # this is use for url_for() working inside javas
 import util
 import os
 from werkzeug.utils import secure_filename
-from flask_cors import cross_origin
 
-
-application = Flask(__name__, template_folder='template')
+application = Flask(__name__)
 
 # JSGlue is use for url_for() working inside javascript which is help us to navigate the url
 jsglue = JSGlue() # create a object of JsGlue
 jsglue.init_app(application) # and assign the app as a init app to the instance of JsGlue
 
 util.load_artifacts()
-
 #home page
 @application.route("/")
-@cross_origin()
 def home():
-    return render_template('index.html') 
+    return render_template("index.html")
 
 @application.route("/")
-@cross_origin()
 def about():
     return render_template("about.html")
-   
+
 #classify waste
-@application.route("/classifywaste",methods=['GET', 'POST'])
-@cross_origin()
+@application.route("/classifywaste", methods = ["POST"])
 def classifywaste():
     image_data = request.files["file"]
     #save the image to upload
@@ -37,17 +31,10 @@ def classifywaste():
 
     predicted_value, details, video1, video2 = util.classify_waste(image_path)
     os.remove(image_path)
-    return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)   
-
-
-@application.route("/")
-@cross_origin()
-def feedback():
-    return render_template("feedback.html")
+    return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
 
 # here is route of 404 means page not found error
 @application.errorhandler(404)
-@cross_origin()
 def page_not_found(e):
     # here i created my own 404 page which will be redirect when 404 error occured in this web app
     return render_template("404.html")
