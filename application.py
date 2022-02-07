@@ -4,7 +4,7 @@ import util
 import os
 from werkzeug.utils import secure_filename
 
-application = Flask(__name__,, template_folder='template')
+application = Flask(__name__,template_folder='template')
 
 # JSGlue is use for url_for() working inside javascript which is help us to navigate the url
 jsglue = JSGlue() # create a object of JsGlue
