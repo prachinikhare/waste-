@@ -15,11 +15,36 @@ jsglue.init_app(application) # and assign the app as a init app to the instance 
 util.load_artifacts()
 
 #home page
-@application.route("/",methods=['GET','POST'])
+@application.route("/")
 @cross_origin()
 def home():
+    return render_template('index.html') 
+
+@application.route("/")
+@cross_origin()
+def about():
     return render_template("about.html")
-    
+   
+#classify waste
+@application.route("/classifywaste",methods=['GET', 'POST'])
+@cross_origin()
+def classifywaste():
+    image_data = request.files["file"]
+    #save the image to upload
+    basepath = os.path.dirname(__file__)
+    image_path = os.path.join(basepath, "uploads", secure_filename(image_data.filename))
+    image_data.save(image_path)
+
+    predicted_value, details, video1, video2 = util.classify_waste(image_path)
+    os.remove(image_path)
+    return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)   
+
+
+@application.route("/")
+@cross_origin()
+def feedback():
+    return render_template("feedback.html")
+
 # here is route of 404 means page not found error
 @application.errorhandler(404)
 @cross_origin()
