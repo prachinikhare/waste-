@@ -20,11 +20,6 @@ util.load_artifacts()
 def home():
     return render_template("index.html")
 
-@application.route("/",methods=['GET'])
-@cross_origin()
-def about():
-    return render_template("about.html")
-
 #classify waste
 @application.route("/classifywaste",methods=['GET', 'POST'])
 @cross_origin()
@@ -38,11 +33,6 @@ def classifywaste():
     predicted_value, details, video1, video2 = util.classify_waste(image_path)
     os.remove(image_path)
     return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
-
-@application.route("/",methods=['GET'])
-@cross_origin()
-def feedback():
-    return render_template("feedback.html")
     
 # here is route of 404 means page not found error
 @application.errorhandler(404)
