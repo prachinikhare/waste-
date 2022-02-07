@@ -4,8 +4,7 @@ import util
 import os
 from werkzeug.utils import secure_filename
 from flask_cors import cross_origin
-import pandas as pd
-import numpy as np
+
 
 application = Flask(__name__, template_folder='template')
 
