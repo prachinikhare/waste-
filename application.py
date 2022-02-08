@@ -12,8 +12,8 @@ jsglue.init_app(application) # and assign the app as a init app to the instance 
 
 util.load_artifacts()
 #home page
-@application.route("/",methods=['GET'])
-def index():
+@application.route("/")
+def home():
     return render_template("index.html")
 
 @application.route("/about")
@@ -21,7 +21,7 @@ def about():
     return render_template("about.html")
 
 #classify waste
-@application.route("/classifywaste", methods = ["POST"])
+@application.route("/classifywaste",methods=['GET', 'POST'])
 def classifywaste():
     image_data = request.files["file"]
     #save the image to upload
@@ -39,5 +39,6 @@ def page_not_found(e):
     # here i created my own 404 page which will be redirect when 404 error occured in this web app
     return render_template("404.html")
 
-if __name__ == "__main__":
-    application.run(debug=True)
+if __name__ == '__main__':
+    application.debug = True
+    application.run()
