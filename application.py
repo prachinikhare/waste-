@@ -29,7 +29,7 @@ def classifywaste():
     image_path = os.path.join(basepath, "uploads", secure_filename(image_data.filename))
     image_data.save(image_path)
 
-    predicted_value, details, video1, video2 = util.classify_waste(image_path)
+    predicted_value, details, video1, video2 = util.classifywaste(image_path)
     os.remove(image_path)
     return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
 
