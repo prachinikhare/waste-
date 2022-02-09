@@ -14,19 +14,10 @@ util.load_artifacts()
 
 #home page
 @application.route('/')
-@application.route('/index',method = ["GET"])
+@application.route('/classify.html')
 def home():
-    return render_template("index.html")
+    return render_template("classify.html")
 
-@application.route('/about')
-@application.route("/about.html")
-def about():
-    return render_template("about.html")
-
-@application.route('/feedback')
-@application.route("/feedback.html")
-def feedback():
-    return render_template("feedback.html")
 
 #classify waste
 @application.route('/classifywaste')
