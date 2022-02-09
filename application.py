@@ -14,7 +14,7 @@ util.load_artifacts()
 
 #home page
 @application.route('/')
-@application.route('/index.html',methods=['POST'])
+@application.route('/index.html')
 def home():
     return render_template("index.html")
 
