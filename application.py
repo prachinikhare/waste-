@@ -23,7 +23,7 @@ def about():
     return render_template("about.html")
 
 @application.route('/feedback')
-@application.route("/feedback.html",methods=['POST'])
+@application.route("/feedback.html")
 def feedback():
     return render_template("feedback.html")
 
