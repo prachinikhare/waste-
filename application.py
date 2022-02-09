@@ -1,22 +1,28 @@
-from flask import Flask, request,escape, render_template, redirect, jsonify
+from flask import Flask, request, render_template, redirect, jsonify
 from flask_jsglue import JSGlue # this is use for url_for() working inside javascript which is help us to navigate the url
 import util
 import os
 from werkzeug.utils import secure_filename
 
-application = Flask(__name__,template_folder='templates')
+application = Flask(__name__,template_folder='template', static_folder='static')
 
 # JSGlue is use for url_for() working inside javascript which is help us to navigate the url
 jsglue = JSGlue() # create a object of JsGlue
 jsglue.init_app(application) # and assign the app as a init app to the instance of JsGlue
 
 util.load_artifacts()
-
-@application.route('/')
+#home page
+@application.route("/")
 def home():
-    return render_template("classify.html")
+    return render_template("index.html")
 
+@application.route("/about")
+def about():
+    return render_template("about.html")
 
+@application.route("/feedback")
+def feedback():
+    return render_template("feedback.html")
 
 #classify waste
 @application.route("/classifywaste",methods=['GET', 'POST'])
