@@ -12,15 +12,10 @@ jsglue.init_app(application) # and assign the app as a init app to the instance 
 
 util.load_artifacts()
 
-#home page
-@application.route('/')
-@application.route('/classify.html')
-def home():
-    return render_template("classify.html")
-
 
 #classify waste
-@application.route('/classifywaste')
+@application.route('/')
+@application.route('/classify.html')
 @application.route("/classifywaste",methods=['POST'])
 def classifywaste():
     image_data = request.files["file"]
@@ -31,7 +26,7 @@ def classifywaste():
     predicted_value, details, video1, video2 = util.classify_waste(image_path)
     os.remove(image_path)
     return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
-
+    return render_template("classify.html")
 if __name__ == '__main__':
     application.debug = True
     application.run()
