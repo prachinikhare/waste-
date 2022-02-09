@@ -24,8 +24,8 @@ def classifywaste():
     image_data.save(image_path)
     predicted_value, details, video1, video2 = util.classify_waste(image_path)
     os.remove(image_path)
-    return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
-    return render_template("classify.html")
+    return jsonify("classify.html",predicted_value=predicted_value, details=details, video1=video1, video2=video2)
+  
 if __name__ == '__main__':
     application.debug = True
     application.run()
