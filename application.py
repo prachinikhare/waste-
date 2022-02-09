@@ -29,9 +29,9 @@ def feedback():
     return render_template("feedback.html")
 
 #classify waste
-@application.route('/classifywaste')
+@application.route('/classify')
 @application.route("/classify.html",methods=['POST'])
-def classifywaste():
+def classify():
     image_data = request.files["file"]
     #save the image to upload
     basepath = os.path.dirname(__file__)
