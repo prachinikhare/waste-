@@ -15,7 +15,6 @@ util.load_artifacts()
 
 #classify waste
 @application.route('/')
-@application.route('/classify.html')
 @application.route("/classifywaste",methods=['POST'])
 def classifywaste():
     image_data = request.files["file"]
