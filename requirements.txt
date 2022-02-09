@@ -42,5 +42,5 @@ wrapt==1.12.1
 gunicorn==20.1.0
 Flask-SQLAlchemy==2.5.1
 Flask-Cors==3.0.10
-npm==8.4.1
+npm==5.5.1
 webpack==5.37.1
