@@ -29,17 +29,17 @@ def feedback():
     return render_template("feedback.html")
 
 #classify waste
-@application.route("/classifywaste",methods=['POST'])
+@application.route("/classifywaste",methods=['GET','POST'])
 def classifywaste():
-    image_data = request.files["file"]
-    #save the image to upload
-    basepath = os.path.dirname(__file__)
-    image_path = os.path.join(basepath, "uploads", secure_filename(image_data.filename))
-    image_data.save(image_path)
-
-    predicted_value, details, video1, video2 = util.classify_waste(image_path)
-    os.remove(image_path)
-    return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
+    if request.method == 'POST':
+       image_data = request.files["file"]
+       #save the image to upload
+       basepath = os.path.dirname(__file__)
+       image_path = os.path.join(basepath, "uploads", secure_filename(image_data.filename))
+       image_data.save(image_path)
+       predicted_value, details, video1, video2 = util.classify_waste(image_path)
+       os.remove(image_path)
+       return jsonify(predicted_value=predicted_value, details=details, video1=video1, video2=video2)
 
 if __name__ == '__main__':
     application.debug = True
