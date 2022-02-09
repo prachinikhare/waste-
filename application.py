@@ -17,16 +17,18 @@ util.load_artifacts()
 def home():
     return render_template("index.html")
 
+@application.route('/about')
 @application.route("/about.html")
 def about():
     return render_template("about.html")
 
-@application.route("/feedback.html")
+@application.route('/feedback')
+@application.route("/feedback.html",methods=['POST'])
 def feedback():
     return render_template("feedback.html")
 
 #classify waste
-@application.route("/classifywaste",methods=['GET', 'POST'])
+@application.route("/classifywaste",methods=['POST'])
 def classifywaste():
     image_data = request.files["file"]
     #save the image to upload
