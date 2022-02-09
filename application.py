@@ -31,7 +31,7 @@ def feedback():
 #classify waste
 @application.route('/')
 @application.route('/classify.html')
-def home():
+def classify():
     return render_template("classify.html")
 
 @application.route('/classifywaste')
