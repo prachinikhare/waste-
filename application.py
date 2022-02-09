@@ -29,7 +29,7 @@ def feedback():
     return render_template("feedback.html")
 
 #classify waste
-@application.route('/classify.html')
+@application.route('/classify')
 @application.route("/classify",methods=['POST'])
 def classify():
     image_data = request.files["file"]
