@@ -5,7 +5,7 @@ import os
 from PIL import Image
 from werkzeug.utils import secure_filename
 
-application = Flask(__name__,template_folder='templates', static_folder='static')
+application = Flask(__name__,template_folder='templates', static_folder='static', images_folder='images')
 
 # JSGlue is use for url_for() working inside javascript which is help us to navigate the url
 jsglue = JSGlue() # create a object of JsGlue
