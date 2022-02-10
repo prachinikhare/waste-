@@ -49,7 +49,7 @@ def classifywaste():
         filename = secure_filename(image_data.filename)
         #save the image to upload
         basepath = os.path.abspath(os.path.dirname(__file__))
-        image_path = os.path.join(basepath,application.config["UPLOAD_FOLDER"],filename))
+        image_path = os.path.join(basepath,application.config["UPLOAD_FOLDER"],filename)
         image_data.save(image_path)
         predicted_value, details, video1, video2 = util.classify_waste(image_path)
         os.remove(image_path)
