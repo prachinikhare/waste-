@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, redirect, jsonify
 from flask_jsglue import JSGlue # this is use for url_for() working inside javascript which is help us to navigate the url
 import util
 import os
+from PIL import Image
 from werkzeug.utils import secure_filename
 
 application = Flask(__name__,template_folder='templates', static_folder='static')
