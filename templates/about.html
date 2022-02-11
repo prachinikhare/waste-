@@ -25,7 +25,7 @@
     <!--navigation bar-->
     <header class="header">
         <div class="logo">
-            <img src="./images/logo.png" alt="Logo" />
+            <img src="{{ url_for("static",filename="images/logo.png") }}" alt="Logo" />
             <b>Waste Recycling</b>
         </div>
         <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -81,9 +81,9 @@
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner-column wow fadeInLeft">
                         <figure class="image-1"><a href="#" class="lightbox-image" data-fancybox="images"><img
-                                    src="images/image-1.png" alt=""></a></figure>
+                                    src="{{ url_for("static",filename="images/image-1.png") }}" alt=""></a></figure>
                         <figure class="image-2"><a href="#" class="lightbox-image" data-fancybox="images"><img
-                                    src="images/image-2.jpg" alt=""></a></figure>
+                                    src="{{ url_for("static",filename="images/image-2.jpg") }}" alt=""></a></figure>
                     </div>
                 </div>
             </div>
@@ -93,8 +93,8 @@
     <div class="container my-5" style="margin-bottom: 60px;">
         <div class="row">
             <div class="col-md-6 text-center">
-                <img src="./images/dustbin_index.jpg"
-                    class="img-fluid" style="box-shadow: 0 0 15px #eee;" alt="">
+                <img src="{{ url_for("static",filename="images/dustbin_index.jpg") }}"
+                    class="img-fluid" style="box-shadow: 0 0 15px #eee;" alt="" />
             </div>
                 <p class="text-secondary" style="font-size: 16px;line-height: 26px;color: #848484;
                 font-weight: 400; margin-top: 40px;">The prime motivation behind this project has been the
@@ -165,7 +165,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <img src="images/Recycling Company Dubai.jpeg" alt="about" class="img-fluid" width="100%">
+                    <img src="{{ url_for("static",filename="images/Recycling Company Dubai.jpeg") }}" alt="about" class="img-fluid" width="100%" />
                 </div>
                 <div class="col-lg-6">
                     <h3>Types of waste materials which are use for Recycling:</h3>
