@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 
 application = Flask(__name__ , template_folder='templates',instance_relative_config=True, static_url_path = "/static", static_folder = "static")
 UPLOAD_FOLDER = './static'
-application.config['UPLOAD_FOLDER'] = "C:\Users\Dell\Downloads\Awareness of waste recycling\images"
+application.config['UPLOAD_FOLDER'] = "C:/Users/Dell/Downloads/Awareness of waste recycling/images"
 # JSGlue is use for url_for() working inside javascript which is help us to navigate the url
 jsglue = JSGlue() # create a object of JsGlue
 jsglue.init_app(application) # and assign the app as a init app to the instance of JsGlue
