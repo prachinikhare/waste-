@@ -36,7 +36,7 @@ data = {
 
 def load_artifacts():
     global model
-    model = tf.keras.models.load_model("classifyWaste.h5")
+    model = tf.keras.models.load_model("classifyWaste (1).h5")
 
 def classify_waste(image_path):
 	global model, output_class
