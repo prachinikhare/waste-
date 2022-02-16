@@ -34,9 +34,10 @@ data = {
 }
 
 
+
 def load_artifacts():
     global model
-    model = tf.keras.models.load_model("Classify_Waste.pth")
+    model = tf.keras.models.load_model("export.pkl")
 
 def classify_waste(image_path):
 	global model, output_class
