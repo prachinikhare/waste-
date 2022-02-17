@@ -1,17 +1,6 @@
-# coding=utf-8
-import sys
-import os
-import glob
-import re
-from pathlib import Path
-
-# Import fast.ai Library
-from fastai import *
-from fastai.vision import *
 import tensorflow as tf
 import numpy as np
 
-path = Path("path")
 model = None
 output_class = ["Batteries", "Clothes", "E-waste", "Glass", "Light Blubs", "Metal", "Organic", "Paper", "Plastic"]
 data = {
@@ -44,21 +33,16 @@ data = {
 	"rYwBL_6hB2I", "I_fUpP-hq3A"]
 }
 
-# depricated use DataBunch.load_empty
-data2 = ImageDataBunch.single_from_classes(path, output_class, model, ds_tfms=get_transforms(), size=224).normalize(imagenet_stats)
-# learn = create_cnn(data2, models.resnet34)
-# learn.load('model_9086')
-path1 = Path("./path/models")
-learn = load_learner(path1, 'export.pkl')
 
+def load_artifacts():
+    global model
+    model = tf.keras.models.load_model("classifyWaste.h5")
 
-def model_predict(img_path):
-    """
-       model_predict will return the preprocessed image
-    """
-   
-    img = open_image(img_path)
-    predicted_array = learn.predict(img)
-    predicted_value = output_class[np.argmax(predicted_array)]
-    return predicted_value, data[predicted_value][0], data[predicted_value][1], data[predicted_value][2]
-    
+def classify_waste(image_path):
+	global model, output_class
+	test_image = tf.keras.preprocessing.image.load_img(image_path, target_size=(224, 224))
+	test_image = tf.keras.preprocessing.image.img_to_array(test_image) / 255
+	test_image = np.expand_dims(test_image, axis = 0)
+	predicted_array = model.predict(test_image)
+	predicted_value = output_class[np.argmax(predicted_array)]
+	return predicted_value, data[predicted_value][0], data[predicted_value][1], data[predicted_value][2]
